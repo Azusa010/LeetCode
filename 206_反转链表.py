@@ -4,16 +4,26 @@ class ListNode:
         self.val = val
         self.next = next
         
+# class Solution:
+#     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+#         pre = None
+#         cur = head
+#         while cur is not None:
+#             temp = cur.next
+#             cur.next = pre
+#             pre = cur
+#             cur = temp
+#         return pre
+
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        pre = None
-        cur = head
-        while cur is not None:
-            temp = cur.next
+        def recur(cur,pre):
+            if not cur:
+                return pre
+            res = recur(cur.next,cur)
             cur.next = pre
-            pre = cur
-            cur = temp
-        return pre
+            return res
+        return recur(head,None)
         
 l1 = ListNode(1)
 l2 = ListNode(2)
